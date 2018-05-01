@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+ {
+    box-sizing: border-box;
+}
+.navbar-header{
+  background-color: mediumpurple;
+  text-align: center;
+  font-size: 30px;
+  height: 50px;
+}
+.navbar-nav{
+  background-color: mediumseagreen;
+  text-align: center;
+  height: 30px;
+}
+.navbuttons {
+  background-color: aliceblue; /* Green */
+  color: midnightblue;
+  text-align: center;
+  display: inline-block;
+}
+
+.nb {
+  border-radius: 12px;
+  height: 30px;
+  /*width:50%;*/
+}
+
+.Video {
+/*      border:1px solid black;*/
+      padding-top: 15px;
+      padding-bottom: 15px;
+      /*background-color: orange;*/
+/*      width: 50%;*/
+}
+
+.Video1 {
+/*      border:1px solid black;*/
+      padding-top: 30px;
+      padding-bottom: 30px;
+      /*background-color: thistle;*/
+/*      width: 50%;*/
+}
+
+.button {
+/*      border:1px solid black;*/
+  background-color: aliceblue; /* Green */
+  color: lightseagreen;
+  text-align: center;
+  display: inline-block;
+}
+
+.button1 {
+  border-radius: 12px;
+  width:50%;
+}
+
+  .left-column {
+    text-align: center;
+    float: left;
+    border:1px solid black;
+    background-color: lightskyblue;
+    width: 49%;
+  }
+
+  .right-column{
+    text-align: center;
+    float: right;
+    border:1px solid black;
+    background-color: deepskyblue;
+    width: 49%;
+  }
+
+  .rbutton {
+    background-color: white;
+    color: lightcoral;
+  }
+
+  .abutton {
+    background-color: white;
+    color: mediumseagreen;
+  }  
+
+  .removebutton {
+    border-radius: 20px;
+    width: 20%;
+  }
+</style>
+
+
+<script type="text/javascript">
+    function addtoSaved(saved_div, recommended_div, song, id) {
+      var to_move = document.getElementById(song);
+      var get_id = document.getElementById(song).id;
+      var saved = document.getElementById(saved_div);
+      var recommended = document.getElementById(recommended_div);
+      var change_text = document.getElementById(id).innerHTML = "Remove from Saved"
+      var new_function = "addtoRecommend('left', 'right', '" + get_id + "', this.id);";
+      document.getElementById(id).setAttribute("onClick", new_function);
+      recommended.removeChild(to_move);
+      saved.appendChild(to_move);
+      document.getElementById(song).setAttribute("class", "Video");
+      document.getElementById(id).setAttribute("class", "rbutton removebutton");
+    }
+    function addtoRecommend(saved_div, recommended_div, song, id){
+      var to_move = document.getElementById(song);
+      var get_id = document.getElementById(song).id;
+      var saved = document.getElementById(saved_div);
+      var recommended = document.getElementById(recommended_div);
+      var change_text = document.getElementById(id).innerHTML = "Add to Saved"
+      var new_function = "addtoSaved('left', 'right', '" + get_id + "', this.id);";
+      document.getElementById(id).setAttribute("onClick", new_function);
+      saved.removeChild(to_move);
+      recommended.appendChild(to_move);
+      document.getElementById(song).setAttribute("class", "Video1");
+      document.getElementById(id).setAttribute("class", "abutton removebutton");
+    }
+
+    function video_click(element){
+      var song_name = element.innerHTML;
+      var song_artist = song_name.split("-");
+      var video_name = song_artist[0];
+      video_name = video_name.toLowerCase();
+      video_name = video_name.replace(/ /g,"");
+      video_name = video_name.replace(/'/g, "");
+      var file_to_open = "file:///Users/mihirgulati/Documents/UI%20Design%20Final%20Project/html_videos/search_record.html?video_name=" + video_name + ".mp4";
+      /*?video_name=" */
+      window.open(file_to_open);
+    }
+</script>
+
+
+<head>
+
+	<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="my_playlist.html">Learning Guitar</a>
+    </div>
+    <div data-role = "navbar">
+    <ul class="navbar-nav">
+	<a href="my_playlist.html"><button class = "nb navbuttons">My Playlist</button></a>
+	<a href="my_recordings.html"><button class = "nb navbuttons">My Personal Recordings</button></a>
+
+</ul></div></nav>
+</head>
+
+
+<body>
+<p1>
+<div class = "row1">
+  <div class = "left-column" id = "left">My Saved Videos
+    <div class="Video" align = "left" id = "s1">
+      <button class="button button1" onClick = "video_click(this);">Riptide - Vance Joy</button>
+            <button class="rbutton removebutton" align = "right" onClick = "addtoRecommend('left', 'right', 's1', this.id);" id = "a1">Remove from Saved</button>
+  </div>    <div class="Video" align = "left" id = "s2">
+      <button class="button button1" onClick = "video_click(this);">I’m Yours - Jason Mraz 
+</button>
+      <button class="rbutton removebutton" align = "right" onClick = "addtoRecommend('left', 'right', 's2', this.id);" id = "a2">Remove from Saved</button>
+  </div>    <div class="Video" align = "left" id = "s3">
+      <button class="button button1" onClick = "video_click(this);">The Only Exception - Paramore</button>      <button class="rbutton removebutton" align = "right" onClick = "addtoRecommend('left', 'right', 's3', this.id);" id = "a3">Remove from Saved</button>
+
+  </div>    <div class="Video" align = "left" id = "s4">
+      <button class="button button1" onClick = "video_click(this);">Your Body is a Wonderland - John Mayer</button>
+            <button class="rbutton removebutton" align = "right" onClick = "addtoRecommend('left', 'right', 's4', this.id);" id = "a4">Remove from Saved</button>
+  </div>    <div class="Video" align = "left" id = "s5">
+      <button class="button button1" onClick = "video_click(this);">Stubborn Love - Lumineers</button>
+            <button class="rbutton removebutton" align = "right" onClick = "addtoRecommend('left', 'right', 's5', this.id);" id = "a5">Remove from Saved</button>
+  </div>    <div class="Video" align = "left" id = "s6">
+      <button class="button button1" onClick = "video_click(this);">Shake it Off - Taylor Swift</button>
+            <button class="rbutton removebutton" align = "right" onClick = "addtoRecommend('left', 'right', 's6', this.id);" id = "a6">Remove from Saved</button>
+  </div>    <div class="Video" align = "left" id = "s7">
+      <button class="button button1" onClick = "video_click(this);">Rivers and Roads - The Head and the Heart</button>
+            <button class="rbutton removebutton" align = "right" onClick = "addtoRecommend('left', 'right', 's7', this.id);" id = "a7">Remove from Saved</button>
+  </div>    <div class="Video" align = "left" id = "s8">
+      <button class="button button1" onClick = "video_click(this);">Skinny Love - Bon Iver</button>
+            <button class="rbutton removebutton" align = "right" onClick = "addtoRecommend('left', 'right', 's8', this.id);" id = "a8">Remove from Saved</button>
+  </div>    <div class="Video" align = "left" id = "s9">
+      <button class="button button1" onClick = "video_click(this);">The Girl - City and Colour</button>
+            <button class="rbutton removebutton" align = "right" onClick = "addtoRecommend('left', 'right', 's9', this.id);" id = "a9">Remove from Saved</button>
+  </div>    <div class="Video" align = "left" id = "s10">
+      <button class="button button1" onClick = "video_click(this);">I Will Follow You Into the Dark - Death Cab for Cutie</button>
+      <button class="rbutton removebutton" align = "right" onClick = "addtoRecommend('left', 'right', 's10', this.id);" id = "a10">Remove from Saved</button>
+  </div>
+</div>
+   <div class = "right-column" id = "right">Recommended Videos
+    <div class="Video1" align = "left" id = "r1">
+      <button class="button button1" onClick = "video_click(this);">Morning Song - Lumineers</button>
+       <button class="abutton removebutton" align = "right" onClick = "addtoSaved('left', 'right', 'r1', this.id);" id = "a11">AddtoSaved</button>
+  </div>    <div class="Video1" align = "left" id = "r2">
+      <button class="button button1" onClick = "video_click(this);">Hotel California - Eagles
+</button>
+       <button class="abutton removebutton" align = "right" onClick = "addtoSaved('left', 'right', 'r2', this.id);" id = "a12">Add to Saved</button>
+  </div>    <div class="Video1" align = "left" id = "r3">
+      <button class="button button1" onClick = "video_click(this);">Angel - Jack Johnson</button>
+             <button class="abutton removebutton" align = "right" onClick = "addtoSaved('left', 'right', 'r3', this.id);" id = "a13">Add to Saved</button>
+  </div>    <div class="Video1" align = "left" id = "r4">
+      <button class="button button1" onClick = "video_click(this);">Yellow - Coldplay</button>
+             <button class="abutton removebutton" align = "right" onClick = "addtoSaved('left', 'right', 'r4', this.id);" id = "a14">Add to Saved</button>
+  </div>    <div class="Video1" align = "left" id = "r5">
+      <button class="button button1" onClick = "video_click(this);">Gravity - John Mayer</button>
+             <button class="abutton removebutton" align = "right" onClick = "addtoSaved('left', 'right', 'r5', this.id);" id = "a15">Add to Saved</button>
+  </div>    
+  </div>
+    </div>
+  </div>
+</div>
+
+ </p1>
+ <p2>
+
+
+ </p2>
+
+
+</body>
+</html>
+

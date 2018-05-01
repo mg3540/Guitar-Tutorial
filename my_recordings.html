@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+ {
+    box-sizing: border-box;
+}
+.navbar-header{
+  background-color: mediumpurple;
+  text-align: center;
+  font-size: 30px;
+  height: 50px;
+}
+.navbar-nav{
+  background-color: mediumseagreen;
+  text-align: center;
+  height: 30px;
+}
+.navbuttons {
+  background-color: aliceblue; /* Green */
+  color: midnightblue;
+  text-align: center;
+  display: inline-block;
+}
+
+.nb {
+  border-radius: 12px;
+  height: 30px;
+  /*width:50%;*/
+}
+
+.Video {
+/*      border:1px solid black;*/
+      padding-top: 15px;
+      padding-bottom: 15px;
+      /*background-color: orange;*/
+/*      width: 50%;*/
+}
+
+.Video1 {
+/*      border:1px solid black;*/
+      padding-top: 30px;
+      padding-bottom: 30px;
+      /*background-color: thistle;*/
+/*      width: 50%;*/
+}
+
+.button {
+/*      border:1px solid black;*/
+  background-color: aliceblue; /* Green */
+  color: lightseagreen;
+  text-align: center;
+  display: inline-block;
+}
+
+.button1 {
+  border-radius: 12px;
+  width:50%;
+}
+
+  .left-column {
+    text-align: center;
+    float: left;
+    border:1px solid black;
+    background-color: lightskyblue;
+    width: 49%;
+  }
+
+  .right-column{
+    text-align: center;
+    float: right;
+    border:1px solid black;
+    background-color: deepskyblue;
+    width: 49%;
+  }
+
+</style>
+
+
+
+<head>
+
+	<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="my_playlist.html">Learning Guitar</a>
+    </div>
+    <div data-role = "navbar">
+    <ul class="navbar-nav">
+	<a href="my_playlist.html"><button class = "nb navbuttons">My Playlist</button></a>
+	<a href="my_recordings.html"><button class = "nb navbuttons">My Personal Recordings</button></a>
+
+</ul></div></nav>
+</head>
+
+
+<body>
+<p1>
+<div class = "row1">
+  <div class = "left-column" id = "left">My Saved Videos
+    <div class="Video" align = "left" id = "s1">
+      <button class="button button1" onClick = "video_click(this);">Riptide - Vance Joy</button>
+
+    
+  </div>    <div class="Video" align = "left" id = "s3">
+      <button class="button button1" onClick = "video_click(this);">The Only Exception - Paramore</button>      
+</div>
+</div>
+   <div class = "right-column" id = "right">Your Video
+      <div class="video">Video
+    <video id = "video1" width="400" height="300" controls="controls">
+      <source id = "source1" src = "riptide.mp4" type="video/mp4"></video>
+  </div>
+  </div>    
+  </div>
+    </div>
+  </div>
+</div>
+
+ </p1>
+
+
+<script type="text/javascript">
+
+    function video_click(element){
+      var song_name = element.innerHTML;
+      var song_artist = song_name.split("-");
+      var video_name = song_artist[0];
+      video_name = video_name.toLowerCase();
+      video_name = video_name.replace(/ /g,"");
+      video_name = video_name.replace(/'/g, "");
+      video_file = video_name + ".mp4";
+      changeSource(video_file);
+      return;
+    }
+
+    function changeSource(video_file){
+        var getVideo = document.getElementById("video1");
+        var get_source = document.getElementById("source1");
+        get_source.setAttribute("src", video_file);
+        getVideo.load();
+        return;
+    }
+
+</script>
+
+
+</body>
+</html>
+

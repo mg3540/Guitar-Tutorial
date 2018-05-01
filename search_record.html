@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+* {
+box-sizing: border-box;}
+
+.navbar-header{
+  background-color: mediumpurple;
+  text-align: center;
+  font-size: 30px;
+  height: 50px;
+}
+.navbar-nav{
+  background-color: mediumseagreen;
+  text-align: center;
+  height: 30px;
+}
+.navbuttons {
+  background-color: aliceblue; /* Green */
+  color: midnightblue;
+  text-align: center;
+  display: inline-block;
+}
+
+.nb {
+  border-radius: 12px;
+  height: 30px;
+  /*width:50%;*/
+}
+.button {
+
+  background-color: aliceblue;
+  color: lightseagreen;
+  text-align: center;
+  display: inline-block;
+}
+
+.button1 {
+  border-radius: 12px;
+  width:50%;
+}
+
+/* Create two equal columns that floats next to each other */
+
+.new-row {
+    margin-top: 20px;
+	border: 1px solid black;
+/*    background-color: green;*/
+	float: left;
+    width: 450px;
+    height: 300px;
+}
+
+.audio-buttons {
+/*    background-color: orange;*/
+/*	float: bottom;*/
+	border:1px solid black;
+    height: 250px;
+    width: 450px;
+
+}
+
+.video {
+    float: left;
+    border:1px solid black;
+    width: 49%;
+    margin-bottom: 100px;
+    height: 300px; /* Should be removed. Only for demonstration 
+
+*/}
+.lyrics {
+    float: right;
+    width: 51%;
+    border:1px solid black;
+    padding-bottom: 50px;
+    height: 500px; /* Should be removed. Only for demonstration 
+*/}
+.row {
+}
+
+/*.download{
+    display: none;
+}
+
+.button{
+    display: none;
+}*/
+
+</style>
+
+<head>
+
+	<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="my_playlist.html">Learning Guitar</a>
+    </div>
+    <div data-role = "navbar">
+    <ul class="nav navbar-nav">
+	<a href="my_playlist.html"><button>My Playlist</button></a>
+	<a href="my_recordings.html"><button>My Personal Recordings</button></a>
+
+</ul></div></nav>
+</head>
+
+<body>
+<p1>
+<!-- <div class = "container"> -->
+<div class="row" id="r1">
+  <div class="video" title = "Video">
+    <video id = "v1" width="400" height="300" controls="controls">
+      <source id = "s1" src = "" type="video/mp4"></video>
+    <div class ="new-row">
+     <div class="audio-buttons">
+            <video id = "v2" controls = "controls" width="450" height="250"></video>
+            <button id="rec" onclick="onBtnRecordClicked()">Record</button>
+            <button id="pauseRes"   onclick="onPauseResumeClicked()" disabled>Pause</button>
+            <button id="stop"  onclick="onBtnStopClicked()" disabled>Stop</button>
+            <a href="http://google.com" id="addRecordings" onclick = "add_recording();" download>Add to Saved Recordings</button> 
+         </div>
+
+        
+
+        <p id="data"></p>
+
+
+        <script src="main.js"></script>
+
+
+
+    </div>
+    </div>
+    </div>
+	<div class="lyrics" id = "l1" title = "Lyrics and Chords"> 
+		<iframe src="" width="400" height="500" id = "e1" frameborder="0"></iframe>
+	</div>
+</div>
+<!-- </div> -->
+
+ </p1>
+<script type="text/javascript">
+    var getVideo = document.getElementById("v1");
+    var get_source = document.getElementById("s1");
+    var get_embed = document.getElementById("e1");
+    var lyrics_source = document.getElementById("l1");
+
+    var video_var = location.search.substring(1).split("=");
+    var song_name = (video_var[1].split("."))[0];
+    song_name = song_name.replace("%E2%80%99", "");
+    var video_file = song_name + ".mp4";
+    var lyrics_file = song_name + ".txt";
+    // lyrics_file = "file:///Users/mihirgulati/Documents/UI%20Design%20Final%20Project/html_videos/" + lyrics_file;
+    
+
+    function changeSource(){
+        get_source.setAttribute("src", video_file);
+        getVideo.load();
+    }
+
+    function changeLyrics(){
+        get_embed.setAttribute("src", lyrics_file);
+        // lyrics_source.load();
+    }
+  
+
+window.onload = changeSource();
+window.onload = changeLyrics();
+</script>
+
+
+
+</body>
+</html>
+
